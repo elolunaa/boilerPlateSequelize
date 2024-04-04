@@ -1,0 +1,9 @@
+[
+    {
+        "info":"API de prueba",
+        "usuarios":[
+            {"nombre":"Eloisa", "password":123},
+            {"nombre":"Rafael", "password":321}
+        ]
+    }   
+]
