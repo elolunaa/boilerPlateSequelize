@@ -19,5 +19,6 @@ module.exports = (sequelize) =>{
         stock:{
             type: DataTypes.REAL
         }
-    })
+    },
+    {timestamps:false})
 }
