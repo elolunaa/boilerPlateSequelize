@@ -1,26 +1,14 @@
-//Servidor backend con EXPRESS
+const {saludar} = require ("../controllers/welcomeControllers")
 
-
-const express = require("express") // Importando express
-const {Pool} = require("pg") // Importando Poool de pg
-const usuarios = require("../usuarios.json")
-const server = express() // Se guarda express en una variable que puede llamarse server o server
-const PORT = 3000 // Variable del puerto donde quiere que se abra, suele ponerse en maysuculas
-
-const pool = new Pool({
-    user:'postgres',
-    host:'localhost',
-    database:'dvd rental',
-    password:'eloisa',
-    port: 5432 //puerto por defecto de Postgresql
-})
-  server.listen(PORT, () => {
-    console.log(`Conexión con el puerto ${PORT}`)
-  }) // se escha el servidor LOCALHOST que se quiere (3000)
-
-  server.get('/', (req, res) => {
-    console.log("Entre a la peticion get de /saludo")
-    res.status(202).send("GET prueba a / sola")
+server.get('/welcome', (req, res) => {
+    console.log("Entre a la peticion get de /welcome")
+    try{
+        saludar()
+        res.status(202).send("GET de prueba a / sola, BIENVENID@")
+    }catch (error){
+        console.log("Estoy dentro del catch")
+        res.status(400).send("Error")
+    }
   })
 
   server.get("/films",(req,res)=>{
@@ -57,6 +45,7 @@ const pool = new Pool({
         }
     })
   })
+
 
 //   server.delete("/films/:id",(req,res)=>{
 //     const film_id = parseInt(req.params.id)
